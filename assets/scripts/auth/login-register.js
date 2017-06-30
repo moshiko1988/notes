@@ -1,3 +1,5 @@
+'use strict'
+
 function showRegisterForm () {
   $('.loginBox').fadeOut('fast', function () {
     $('.registerBox').fadeIn('fast')
@@ -26,7 +28,6 @@ function openLoginModal () {
   setTimeout(function () {
     $('#loginModal').modal('show')
   }, 230)
-
 }
 
 function openRegisterModal () {
@@ -51,11 +52,16 @@ $.post( "/login", function( data ) {
 //  shakeModal()
 // }
 
-function shakeModal () {
-  $('#loginModal .modal-dialog').addClass('shake')
-  $('.error').addClass('alert alert-danger').html('Invalid email/password combination')
-  $('input[type="password"]').val('')
-  setTimeout(function () {
-    $('#loginModal .modal-dialog').removeClass('shake')
-  }, 1000)
+// function shakeModal () {
+//   $('#loginModal .modal-dialog').addClass('shake')
+//   $('.error').addClass('alert alert-danger').html('Invalid email/password combination')
+//   $('input[type="password"]').val('')
+//   setTimeout(function () {
+//     $('#loginModal .modal-dialog').removeClass('shake')
+//   }, 1000)
+// }
+
+module.exports = {
+  openRegisterModal,
+  openLoginModal
 }

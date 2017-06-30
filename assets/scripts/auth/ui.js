@@ -1,5 +1,11 @@
-//
-// const utils = require('../utils')
+function shakeModal () {
+  $('#loginModal .modal-dialog').addClass('shake')
+  $('.error').addClass('alert alert-danger').html('Invalid email/password combination')
+  $('input[type="password"]').val('')
+  setTimeout(function () {
+    $('#loginModal .modal-dialog').removeClass('shake')
+  }, 1000)
+}
 //
 // const signInSuccess = () => {
 //   $('#signInModal').modal('hide')
@@ -24,11 +30,13 @@
 //   utils.clearModalInput('#change-password')
 // }
 //
-// const signInFailure = (error) => {
+
+const signInFailure = (error) => {
 //   utils.clearErrorMessage('#sign-in')
 //   utils.addErrorMessage('#sign-in', error.status)
-//   // console.error(error.status)
-// }
+  shakeModal()
+  console.error(error.status)
+}
 //
 // const signUpFailure = (error) => {
 //   utils.clearErrorMessage('#sign-up')
@@ -48,13 +56,13 @@
 //   // console.error(error.status)
 // }
 //
-// module.exports = {
+module.exports = {
 //   signInSuccess,
 //   signUpSuccess,
 //   signOutSuccess,
 //   changePassSuccess,
-//   signInFailure,
+  signInFailure
 //   signUpFailure,
 //   signOutFailure,
 //   changePassFailure
-// }
+}
