@@ -15,8 +15,15 @@ const ui = require('./ui')
 const checkAuthentication = function () {
   if (localStorage.getItem('token') && localStorage.getItem('id')) {
     api.checkAuth()
+    $('.big-login').hide()
+    $('.hide-register').hide()
+    $('.hide-signOut').show()
+    $('input[type="password"]').val('')
   } else {
-
+    $('.big-login').show()
+    $('.hide-register').show()
+    $('.hide-signOut').hide()
+    $('input[type="password"]').val('')
   }
 }
 

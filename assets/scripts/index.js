@@ -6,7 +6,8 @@ const authEvents = require('./auth/events.js')
 $(() => {
   setAPIOrigin(location, config)
   authEvents.addHandlers()
-  $('.hide-signOut').hide()
+  authEvents.checkAuthentication()
+  // $('.hide-signOut').hide()
 })
 
 // use require with a reference to bundle the file and use it in this file
