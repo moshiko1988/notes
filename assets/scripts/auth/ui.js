@@ -11,6 +11,8 @@ const signInSuccess = () => {
   $('#loginModal').modal('hide')
   $('.big-login').hide()
   $('.hide-register').hide()
+  $('.hide-signOut').show()
+  $('input[type="password"]').val('')
 //   utils.clearErrorMessage('#sign-in')
 //   utils.clearModalInput('#sign-in')
 //   utils.mainDisplay()
@@ -18,7 +20,7 @@ const signInSuccess = () => {
 //
 const signUpSuccess = () => {
   $('#loginModal').modal('hide')
-
+  $('input[type="password"]').val('')
 //   $('#signUpModal').modal('hide')
 //   utils.clearErrorMessage('#sign-up')
 //   utils.clearModalInput('#sign-up')
@@ -28,6 +30,8 @@ const signOutSuccess = () => {
 //   utils.openingDisplay()
   $('.big-login').show()
   $('.hide-register').show()
+  $('.hide-signOut').hide()
+  $('input[type="password"]').val('')
 }
 //
 // const changePassSuccess = () => {

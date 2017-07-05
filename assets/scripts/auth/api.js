@@ -3,19 +3,19 @@
 const config = require('../config')
 const store = require('../store')
 
-const signUp = function (data) {
+const signUp = function (formData) {
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
     method: 'POST',
-    data
+    data: formData
   })
 }
 
-const signIn = function (data) {
+const signIn = function (formData) {
   return $.ajax({
     url: config.apiOrigin + '/sign-in',
     method: 'POST',
-    data
+    data: formData
   })
 }
 
@@ -32,10 +32,20 @@ const changePass = function (data) {
 
 const signOut = function () {
   return $.ajax({
-    url: `${config.apiOrigin}/sign-out/${store.user.id}`,
+    url: `${config.apiOrigin}/sign-out/${localStorage.getItem('id')}`,
     method: 'DELETE',
     headers: {
-      Authorization: `Token token=${store.user.token}`
+      Authorization: `Token token=${localStorage.getItem('token')}`
+    }
+  })
+}
+
+const checkAuth = function () {
+  return $.ajax({
+    url: `${config.apiOrigin}/check-auth/${localStorage.getItem('id')}`,
+    method: 'POST',
+    headers: {
+      Authorization: `Token token=${localStorage.getItem('token')}`
     }
   })
 }
@@ -44,5 +54,6 @@ module.exports = {
   signUp,
   signIn,
   changePass,
-  signOut
+  signOut,
+  checkAuth
 }

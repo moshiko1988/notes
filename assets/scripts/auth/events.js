@@ -4,7 +4,7 @@ const getFormFields = require(`../../../lib/get-form-fields`)
 
 const api = require('./api')
 const ui = require('./ui')
-const store = require('../store')
+// const store = require('../store')
 // const utils = require('../utils')
 
 // const clearModals = function (event) {
@@ -12,6 +12,13 @@ const store = require('../store')
 //   utils.clearModalInput(selector)
 //   utils.clearErrorMessage(selector)
 // }
+const checkAuthentication = function () {
+  if (localStorage.getItem('token') && localStorage.getItem('id')) {
+    api.checkAuth()
+  } else {
+
+  }
+}
 
 const onSignUp = function (event) {
   event.preventDefault()
@@ -26,27 +33,19 @@ const onSignIn = function (event) {
   const data = getFormFields(event.target)
   api.signIn(data)
     .then((response) => {
-      store.user = response.user
-      return store.user
+      localStorage.setItem('id', response.user.id)
+      localStorage.setItem('token', response.user.token)
+      localStorage.setItem('email', response.user.email)
     })
     .then(ui.signInSuccess)
     .catch(ui.signInFailure)
-}
-
-const onChangePass = function (event) {
-  event.preventDefault()
-  const data = getFormFields(event.target)
-  api.changePass(data)
-    .then(ui.changePassSuccess)
-    .catch(ui.changePassFailure)
 }
 
 const onSignOut = function (event) {
   event.preventDefault()
   api.signOut()
     .then(() => {
-      delete store.user
-      return store
+      localStorage.clear()
     })
     .then(ui.signOutSuccess)
     .catch(ui.signOutFailure)
@@ -55,11 +54,11 @@ const onSignOut = function (event) {
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
-  $('#change-password').on('submit', onChangePass)
   $('#sign-out').on('click', onSignOut)
   // $('.modal').on('hidden.bs.modal', clearModals)
 }
 
 module.exports = {
-  addHandlers
+  addHandlers,
+  checkAuthentication
 }
