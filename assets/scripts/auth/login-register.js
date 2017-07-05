@@ -60,8 +60,3 @@ $.post( "/login", function( data ) {
 //     $('#loginModal .modal-dialog').removeClass('shake')
 //   }, 1000)
 // }
-
-module.exports = {
-  openRegisterModal,
-  openLoginModal
-}

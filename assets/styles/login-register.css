@@ -4,9 +4,9 @@
  * Autor: Creative Tim
  * Web-autor: creative.tim
  * Web script: http://creative-tim.com
- * 
+ *
  */
- 
+
 /*  Shake animation  */
 
 @charset "UTF-8";
@@ -73,6 +73,7 @@
 	-o-animation-name: shake;
 	animation-name: shake;
 }
+
 
 .login .modal-dialog{
     width: 350px;

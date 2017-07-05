@@ -24,14 +24,15 @@
 </head>
 
 <body class="container-fluid">
-  <h1>Example</h1>
 
   <div class="container">
       <div class="row">
           <div class="col-sm-4"></div>
           <div class="col-sm-4">
                <a class="btn big-login" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a>
-               <a class="btn big-register" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a></div>
+               <a class="btn big-register hide-register" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a>
+               <a id="sign-out" class="btn big-register hide-signOut" href="javascript:void(0)">Sign Out</a>
+             </div>
           <div class="col-sm-4"></div>
       </div>
 

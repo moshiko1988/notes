@@ -6,23 +6,29 @@ function shakeModal () {
     $('#loginModal .modal-dialog').removeClass('shake')
   }, 1000)
 }
-//
-// const signInSuccess = () => {
-//   $('#signInModal').modal('hide')
+
+const signInSuccess = () => {
+  $('#loginModal').modal('hide')
+  $('.big-login').hide()
+  $('.hide-register').hide()
 //   utils.clearErrorMessage('#sign-in')
 //   utils.clearModalInput('#sign-in')
 //   utils.mainDisplay()
-// }
+}
 //
-// const signUpSuccess = () => {
+const signUpSuccess = () => {
+  $('#loginModal').modal('hide')
+
 //   $('#signUpModal').modal('hide')
 //   utils.clearErrorMessage('#sign-up')
 //   utils.clearModalInput('#sign-up')
-// }
+}
 //
-// const signOutSuccess = () => {
+const signOutSuccess = () => {
 //   utils.openingDisplay()
-// }
+  $('.big-login').show()
+  $('.hide-register').show()
+}
 //
 // const changePassSuccess = () => {
 //   $('#changePassModal').modal('hide')
@@ -57,9 +63,9 @@ const signInFailure = (error) => {
 // }
 //
 module.exports = {
-//   signInSuccess,
-//   signUpSuccess,
-//   signOutSuccess,
+  signInSuccess,
+  signUpSuccess,
+  signOutSuccess,
 //   changePassSuccess,
   signInFailure
 //   signUpFailure,
